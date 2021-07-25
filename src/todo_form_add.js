@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import TodoContext from './todo-context';
 
-const TodoAdd = ({ addItem }) => {
+const TodoAdd = () => {
   const [item, setItem] = useState('');
+  const {todoitemsDispatch} = useContext(TodoContext);
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    addItem(item);
+    todoitemsDispatch({type: 'ADD_ITEM', item});
     setItem('');
   };
 
