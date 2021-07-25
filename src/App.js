@@ -1,4 +1,4 @@
-import React, {useEffect,useReducer} from 'react';
+import React, {useReducer} from 'react';
 import TodoList from './todo_list';
 import TodoAdd from './todo_form_add';
 import './App.css';
