@@ -110,10 +110,11 @@ return (
         {loggedIn === true && (
         <Button className = "login_logout"  onClick = {mySkyLogout}> Logout with MySky </Button>)}
       <header className="App-header">
-        To Do List
-        <TodoList/>
+        TO DO LIST
         <br/>
-        <TodoAdd/>
+        <TodoList />
+        <br/>
+        <TodoAdd />
         <br/>
         <Button onClick = {saveTodoItems}> Save Todo List to MySky</Button>
         <Button onClick = {getTodoItems}> Retrieve Saved Todo List from MySky</Button>
