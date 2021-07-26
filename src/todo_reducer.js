@@ -3,7 +3,7 @@ const todoReducer = (state,action) => {
     case 'POPULATE_ITEMS':
       return action.items;
     case 'ADD_ITEM':
-      return [state,action.item];
+      return [action.item,...state];
     case 'DELETE_ITEM':
       return state.filter((item) => item !== action.itemToBeDeleted);
     default:

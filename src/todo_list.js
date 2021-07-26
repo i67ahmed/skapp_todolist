@@ -7,9 +7,9 @@ const TodoList = () => {
   return (
     <div className="items-container">
       <ul>
-        {items.map((item) => (
-          <li>
-            <TodoItems key={item} item={item} />
+        {items.map((item,index) => (
+          <li key={index}>
+            <TodoItems item={item} />
           </li>
         ))}
       </ul>

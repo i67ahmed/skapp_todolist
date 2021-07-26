@@ -67,20 +67,39 @@ function App() {
 
   //set react state
   setLoggedIn(false);
-};
 
+}
 
+const saveTodoItems = async() => {
+  try {
+    if(loggedIn === true){
+      var data = await mySky.getJSON(hostApp);
+      if(data.length === undefined){
+        data = [todoitemsDispatch];
+      } else {
+        data.push(todoitemsDispatch);
+      }
+      await mySky.setJSON(hostApp, data);
+    } else {
+      window.alert("You need to login first!")
+  } 
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-// useEffect(() => {
-//   const items = mySky.getJSON(hostApp,'items');
-//   if (items) {
-//     todoitemsDispatch({ type: 'POPULATE_ITEMS', items });
-//   }
-// }, []);
-
-// useEffect(() => {
-//   mySky.setJSON(hostApp,'items');
-// }, [items]);
+const getTodoItems = async() => {
+  try {
+    if(loggedIn === true){
+      const data = await mySky.getJSON(hostApp);
+      console.log(data);
+    } else {
+      window.alert("You need to log in first!")
+    }
+  } catch(error) {
+    console.log(error)
+  }
+}
 
 
 return (
@@ -94,6 +113,8 @@ return (
         <Button onClick = {mySkyLogout}> Logout with MySky </Button>)}
         <TodoList/>
         <TodoAdd/>
+        <Button onClick = {saveTodoItems}> Save Todo List to MySky</Button>
+        <Button onClick = {getTodoItems}> Get saved Todo List from MySky</Button>
       </header>
     </div>
   </TodoContext.Provider> 
