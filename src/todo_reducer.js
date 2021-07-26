@@ -1,13 +1,14 @@
-const todoReducer = (state,action) => {
+
+const todoReducer = (state = [],action) => {
   switch(action.type){
     case 'POPULATE_ITEMS':
       return action.items;
     case 'ADD_ITEM':
-      return [action.item,...state];
+      return [...state,action.item];
     case 'DELETE_ITEM':
       return state.filter((item) => item !== action.itemToBeDeleted);
     default:
-      return state;  
+      return state 
   }
 };
 

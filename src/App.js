@@ -105,16 +105,18 @@ const getTodoItems = async() => {
 return (
   <TodoContext.Provider value={{ items, todoitemsDispatch}}>
     <div className="App">
-      <header className="App-header">
-        To Do items
-        {loggedIn === false && (
-        <Button onClick = {mySkyLogin}> Login with MySky</Button>)}
+      {loggedIn === false && (
+        <Button className = "login_logout" onClick = {mySkyLogin}> Login with MySky</Button>)}
         {loggedIn === true && (
-        <Button onClick = {mySkyLogout}> Logout with MySky </Button>)}
+        <Button className = "login_logout"  onClick = {mySkyLogout}> Logout with MySky </Button>)}
+      <header className="App-header">
+        To Do List
         <TodoList/>
+        <br/>
         <TodoAdd/>
+        <br/>
         <Button onClick = {saveTodoItems}> Save Todo List to MySky</Button>
-        <Button onClick = {getTodoItems}> Get saved Todo List from MySky</Button>
+        <Button onClick = {getTodoItems}> Retrieve Saved Todo List from MySky</Button>
       </header>
     </div>
   </TodoContext.Provider> 
